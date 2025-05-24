@@ -65,12 +65,12 @@
   color: rgb(255, 255, 255);
   overflow: hidden;
   white-space: nowrap;
-  animation: typing 3s steps(20, end) infinite;
+  /* animation: typing 3s steps(20, end) infinite; */ /* Removed conflicting CSS animation */
 }
 
 #typing-animation:before {
   content: "";
-  /* position: absolute; */
+  /* position: absolute; */ /* Commented out as per original */
   top: 0;
   left: 0;
   width: 0;
@@ -79,14 +79,14 @@
   animation: typing-cursor 0.5s ease-in-out infinite;
 }
 
-@keyframes typing {
-  from {
+/* @keyframes typing { */ /* Removed conflicting CSS animation */
+/* from {
     width: 0;
   }
   to {
     width: 100%;
   }
-}
+} */
 
 @keyframes typing-cursor {
   from {
@@ -109,9 +109,9 @@
   transform: scale(1.1);
 }
 
-.project-image {
+.project-image { /* Also used for certificate images */
   width: 100%;
-  height: 220px;
+  height: 220px; /* Adjust if needed for certificates */
   object-fit: cover;
   border-radius: 12px;
   transition: transform 0.3s ease;
@@ -121,290 +121,334 @@
   transform: scale(1.1);
 }
 
-	
+/* Styling for Owl Carousel Nav Buttons */
+.certificate-carousel .owl-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none; /* Allow clicks on items behind */
+}
+
+.certificate-carousel .owl-nav button.owl-prev,
+.certificate-carousel .owl-nav button.owl-next {
+    font-size: 2rem; /* Adjust size as needed */
+    color: #ffbd39; /* Or your preferred color */
+    background: rgba(255, 255, 255, 0.5); /* Optional: slight background for visibility */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px; /* Center icon vertically */
+    text-align: center;
+    pointer-events: all; /* Make buttons clickable */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.certificate-carousel .owl-nav button.owl-prev {
+    margin-left: -20px; /* Adjust to position outside or inside */
+}
+.certificate-carousel .owl-nav button.owl-next {
+    margin-right: -20px; /* Adjust to position outside or inside */
+}
+
+.certificate-carousel .owl-nav button.owl-prev:hover,
+.certificate-carousel .owl-nav button.owl-next:hover {
+    background-color: #ffbd39;
+    color: #fff;
+}
+
+.certificate-carousel .owl-dots {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.certificate-carousel .owl-dots .owl-dot span {
+    background: #ccc; /* Default dot color */
+}
+
+.certificate-carousel .owl-dots .owl-dot.active span {
+    background: #ffbd39; /* Active dot color */
+}
+  
 </style>
 
 
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-	  
-	  
+    
+    
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Jaymin Patel</a>
-	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Jaymin Patel</a>
+        <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav nav ml-auto">
-	          <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
-	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
-	          <li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
-	          <li class="nav-item"><a href="#project-section" class="nav-link"><span>Projects</span></a></li>
-	          <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
-	  <section id="home-section" class="hero">
-		  <div class="home-slider  owl-carousel">
-	       <div class="slider-item ">
-	      	<div class="overlay"></div>
-	         <div class="container">
-	          <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-	          	<div class="one-third js-fullheight order-md-last img" style="background-image:url(images/bg_1.png);">
-	          	 <div class="overlay"></div>
-	          	</div>
-		          <div class="one-forth d-flex  align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-		          	<div class="text">
-		          		<span class="subheading">Hello!</span>
-			            <h1 class="mb-4 mt-3">I'm <span>Jaymin Patel</span></h1>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav nav ml-auto">
+            <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
+            <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
+            <li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
+            <li class="nav-item"><a href="#project-section" class="nav-link"><span>Projects</span></a></li>
+            <li class="nav-item"><a href="#certificate-section" class="nav-link"><span>Certificates</span></a></li> {/* Added Certificate Nav Link */}
+            <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section id="home-section" class="hero">
+      <div class="home-slider  owl-carousel">
+        <div class="slider-item ">
+          <div class="overlay"></div>
+          <div class="container">
+            <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
+              <div class="one-third js-fullheight order-md-last img" style="background-image:url(images/bg_1.png);">
+                <div class="overlay"></div>
+              </div>
+              <div class="one-forth d-flex  align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                <div class="text">
+                  <span class="subheading">Hello!</span>
+                  <h1 class="mb-4 mt-3">I'm <span>Jaymin Patel</span></h1>
 
-						 <h2>A Data Analyst</h2>
+                  <h2>A Data Analyst</h2>
 
-						<!-- Element to contain animated typing -->
-						<span id="typing-animation"></span>
+                  <span id="typing-animation"></span>
 
-						<script>
+                  <script>
 
-						// Initialize the typing animation
-						const typingAnimationElement = document.getElementById('typing-animation');
+                  // Initialize the typing animation
+                  const typingAnimationElement = document.getElementById('typing-animation');
 
-						// Create an array of typing text
-						const typingTexts = [
-						'Data-Driven Problem Solver ',
-						'Analytics Explorer  ',
-						'Insight Miner   ',
-						];
+                  // Create an array of typing text
+                  const typingTexts = [
+                  'Data-Driven Problem Solver ',
+                  'Analytics Explorer   ',
+                  'Insight Miner    ',
+                  ];
 
-						// Create a function to display the typing animation for a given text
-						function playTypingAnimation(text) {
-						// Loop through each character and add it to the element
-						for (let i = 0; i < text.length; i++) {
-							setTimeout(() => {
-							typingAnimationElement.textContent += text[i];
-							}, i * 25); // Increase the delay to slow down the typing animation
-						}
+                  // Create a function to display the typing animation for a given text
+                  function playTypingAnimation(text) {
+                  // Loop through each character and add it to the element
+                  for (let i = 0; i < text.length; i++) {
+                    setTimeout(() => {
+                    typingAnimationElement.textContent += text[i];
+                    }, i * 100); // Adjusted typing speed (was 25)
+                  }
 
-						// Once the animation is complete, reset the text and start over
-						setTimeout(() => {
-							typingAnimationElement.textContent = '';
-							playTypingAnimation(typingTexts[(typingTexts.indexOf(text) + 1) % typingTexts.length]);
-						}, text.length * 100);
-						}
+                  // Once the animation is complete, reset the text and start over
+                  setTimeout(() => {
+                    typingAnimationElement.textContent = '';
+                    playTypingAnimation(typingTexts[(typingTexts.indexOf(text) + 1) % typingTexts.length]);
+                  }, text.length * 100 + 2000); // Adjusted pause duration (was text.length * 100)
+                  }
 
-						// Start the typing animation loop
-						playTypingAnimation(typingTexts[0]);
+                  // Start the typing animation loop
+                  playTypingAnimation(typingTexts[0]);
 
-						</script>
+                  </script>
 
-						<br>
-						<br>
-			            <!-- <h2>A Data Analyst</h2> -->
-						<!-- <h2 class="d-flex" style="margin-bottom: 0">With over 5 years of experience</h2> -->
-						<!-- <br> -->
-			            <p><a href="https://github.com/jayminmech7" class="btn btn-white btn-outline-white py-3 px-4">My work</a> 
-							<a href="https://www.linkedin.com/in/jaymin7/" class="btn btn-primary py-3 px-4">LinkedIn</a></p>
-		            </div>
-		          </div>
-	        	</div>
-	        </div>
-	      </div>
-		</div>
+                  <br>
+                  <br>
+                  <p><a href="https://github.com/jayminmech7" class="btn btn-white btn-outline-white py-3 px-4" target="_blank" rel="noopener noreferrer">My work</a> 
+                  <a href="https://www.linkedin.com/in/jaymin7/" class="btn btn-primary py-3 px-4" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
 
 
     <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
-    	<div class="container">
-			<div class="row">
-				<div class="row d-flex align-items-stretch">
-				<!-- <div class="row d-flex"> -->
-					<div class="col-md-6 col-lg-5 d-flex">
-						<div class="img-about img d-flex align-items-stretch">
-							<div class="overlay">
-								<div class="row">
-									<div class="col-sm-6 col-md-5">
-									  <div class="about-img">
-										<img src="images/about-me.png" class="img-fluid rounded b-shadow-a" alt="">
-									  </div>
-									</div>
-									<!-- Details next to profile image -->
-									<div class="col-sm-6 col-md-7">
-									  <div class="about-info">
-										<p><span class="title-s">Name: </span> <span>Jaymin Patel</span></p>
-										<p><span class="title-s">Profile: </span> <span>Data Analyst</span></p>
-										<p><span class="title-s">Specialization: </span> <span>SQL, Python, Power BI, Advance Excel</span></p>
-										<p><span class="title-s">Address: </span> <span>New York, USA</span></p>
-									  </div>
-									</div>
-								  </div>
+      <div class="container">
+        <div class="row">
+          <div class="row d-flex align-items-stretch">
+          <div class="col-md-6 col-lg-5 d-flex">
+              <div class="img-about img d-flex align-items-stretch">
+                <div class="overlay">
+                  <div class="row">
+                    <div class="col-sm-6 col-md-5">
+                      <div class="about-img">
+                        <img src="images/about-me.png" class="img-fluid rounded b-shadow-a" alt="">
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-7">
+                      <div class="about-info">
+                        <p><span class="title-s">Name: </span> <span>Jaymin Patel</span></p>
+                        <p><span class="title-s">Profile: </span> <span>Data Analyst</span></p>
+                        <p><span class="title-s">Specialization: </span> <span>SQL, Python, Power BI, Advance Excel</span></p>
+                        <p><span class="title-s">Address: </span> <span>New York, USA</span></p>
+                      </div>
+                    </div>
+                  </div>
 
-								<div class="skill-mf">
-									<p class="title-s">Skills</p>
-									<span>SQL</span> <span class="pull-right">95%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-									
-									<span>Advance Excel & Google Sheet</span> <span class="pull-right">95%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-									
-									<span>PYTHON</span> <span class="pull-right">85%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-									
-									<span>Data Visualizations</span> <span class="pull-right">90%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-									
-									<span>Statistical Analysis</span> <span class="pull-right">85%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
-						<div class="row justify-content-start pb-3">
-							<div class="col-md-12 heading-section ftco-animate">
-								
-								<h1 class="big">About</h1>
-								<h2 class="mb-4">About</h2>
-								
-								<p>Detail-oriented and passionate data professional with a strong foundation in data handling, manipulation, analysis, reporting and visualization,   
-									through work and academic projects experience to provide actionable insights for data driven & analytical solutions.</p>
-								<ul class="about-info mt-4 px-md-0 px-2">
-									<li class="d-flex"><span>Domain:</span> <span>Retail, Ecommerce, BFSI &amp; Health</span></li>
-									<li class="d-flex"><span>Education:</span> <span>Bachelor of Mechanical Engineering & MS in Business Analytics</span></li>
-									<li class="d-flex"><span>Programing:</span> <span>SQL, Python &amp; R</span></li>
-									<li class="d-flex"><span>BI Tools:</span> <span>Tableau, Microsoft Power BI, SAP Signavio, &amp; Looker</span></li>
-									<li class="d-flex"><span>Reporting:</span> <span>Microsoft Office Suite, Trello, NextCloud &amp; Jira</span></li>
-									<li class="d-flex"><span>Statistics:</span> <span>Regression, Predictive modeling &amp; Time Series Analysis</span></li>
-									<li class="d-flex"><span>Interest:</span> <span>Traveling, Poetry, Photography</span></li>
-									
-								</ul>
-							</div>
-						</div>
+                  <div class="skill-mf">
+                    <p class="title-s">Skills</p>
+                    <span>SQL</span> <span class="pull-right">95%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                    </div>
+                    
+                    <span>Advance Excel & Google Sheet</span> <span class="pull-right">95%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                    </div>
+                    
+                    <span>PYTHON</span> <span class="pull-right">85%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                    </div>
+                    
+                    <span>Data Visualizations</span> <span class="pull-right">90%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                    </div>
+                    
+                    <span>Statistical Analysis</span> <span class="pull-right">85%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
+              <div class="row justify-content-start pb-3">
+                <div class="col-md-12 heading-section ftco-animate">
+                  
+                  <h1 class="big">About</h1>
+                  <h2 class="mb-4">About</h2>
+                  
+                  <p>Detail-oriented and passionate data professional with a strong foundation in data handling, manipulation, analysis, reporting and visualization,    
+                    through work and academic projects experience to provide actionable insights for data driven & analytical solutions.</p>
+                  <ul class="about-info mt-4 px-md-0 px-2">
+                    <li class="d-flex"><span>Domain:</span> <span>Retail, Ecommerce, BFSI &amp; Health</span></li>
+                    <li class="d-flex"><span>Education:</span> <span>Bachelor of Mechanical Engineering & MS in Business Analytics</span></li>
+                    <li class="d-flex"><span>Programing:</span> <span>SQL, Python &amp; R</span></li>
+                    <li class="d-flex"><span>BI Tools:</span> <span>Tableau, Microsoft Power BI, SAP Signavio, &amp; Looker</span></li>
+                    <li class="d-flex"><span>Reporting:</span> <span>Microsoft Office Suite, Trello, NextCloud &amp; Jira</span></li>
+                    <li class="d-flex"><span>Statistics:</span> <span>Regression, Predictive modeling &amp; Time Series Analysis</span></li>
+                    <li class="d-flex"><span>Interest:</span> <span>Traveling, Poetry, Photography</span></li>
+                    
+                  </ul>
+                </div>
+              </div>
 
 
-						<div class="counter-wrap ftco-animate d-flex mt-md-3">
-							<div class="text">
-								<p class="mb-4">
-									<span class="number" data-number="12">0</span> <span>+</span>
-									<span>&nbsp; Projects completed</span>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+              <div class="counter-wrap ftco-animate d-flex mt-md-3">
+                <div class="text">
+                  <p class="mb-4">
+                    <span class="number" data-number="12">0</span> <span>+</span>
+                    <span>&nbsp; Projects completed</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
 
 
-	
+  
     <section class="ftco-section ftco-no-pb" id="resume-section">
-    	<div class="container">
-    		<div class="row justify-content-center pb-5">
+      <div class="container">
+        <div class="row justify-content-center pb-5">
           <div class="col-md-10 heading-section text-center ftco-animate">
-          	<h1 class="big big-2">Resume</h1>
+            <h1 class="big big-2">Resume</h1>
             <h2 class="mb-4">Resume</h2>
             <p>Analytical and solutions-oriented data professional with a track record of turning complex datasets into meaningful insights. Experienced in applying data analysis techniques and tools to support informed decision-making of business organizations.</p>
           </div>
         </div>
 
-		<div class="row">
-  <h1 class="big-4">Experience</h1>
-  <div class="underline"></div>
-</div>
-<br>
-
-<div class="row">
-  <div class="col-md-12">
-    <div class="resume-wrap ftco-animate">
-      <span class="date">Jan 2025 – May 2025</span>
-      <h2>Capstone Externship – Business Analytics Consultant</h2>
-      <span class="position">JLA Trust (Nonprofit Organization, U.S.)</span>
-      <p class="mt-4">Responsibilities:
-        <ul>
-          <li>Automated beneficiary onboarding workflows using DocuSign, Airtable, True Link API, and Make, reducing enrollment time by 70%.</li>
-          <li>Centralized client and trust data operations for reporting, compliance, and approval workflows.</li>
-          <li>Led API integrations using Python & GitHub, enabling overnight data sync and dashboard updates.</li>
-          <li>Coordinated with cross-functional teams (legal, finance, program) to align tech solutions with compliance.</li>
-        </ul>
-      </p>
+    <div class="row">
+      <h1 class="big-4">Experience</h1>
+      <div class="underline"></div>
     </div>
-  </div>
+    <br>
 
-  <div class="col-md-12">
-    <div class="resume-wrap ftco-animate">
-      <span class="date">Aug 2019 – Aug 2023</span>
-      <h2>Business Intelligence & Sales Analyst</h2>
-      <span class="position">SEVITSIL – Suresh Enterprises, Mehsana, India</span>
-      <p class="mt-4">Responsibilities:
-        <ul>
-          <li>Developed interactive dashboards using Tableau and Excel to automate sales reporting, reducing manual effort by 40%.</li>
-          <li>Extracted and cleaned data from ERP systems using SQL, improving demand forecasting accuracy.</li>
-          <li>Delivered strategic insights via competitor and pricing analysis, driving a 12% increase in conversion rates.</li>
-          <li>Analyzed sales performance data to optimize pricing and forecasting strategies across business units.</li>
-          <li>Supported sales and marketing teams with real-time reporting, client lead analysis, and performance dashboards.</li>
-        </ul>
-      </p>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="resume-wrap ftco-animate">
+          <span class="date">Jan 2025 – May 2025</span>
+          <h2>Capstone Externship – Business Analytics Consultant</h2>
+          <span class="position">JLA Trust (Nonprofit Organization, U.S.)</span>
+          <p class="mt-4">Responsibilities:
+            <ul>
+              <li>Automated beneficiary onboarding workflows using DocuSign, Airtable, True Link API, and Make, reducing enrollment time by 70%.</li>
+              <li>Centralized client and trust data operations for reporting, compliance, and approval workflows.</li>
+              <li>Led API integrations using Python & GitHub, enabling overnight data sync and dashboard updates.</li>
+              <li>Coordinated with cross-functional teams (legal, finance, program) to align tech solutions with compliance.</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="resume-wrap ftco-animate">
+          <span class="date">Aug 2019 – Aug 2023</span>
+          <h2>Business Intelligence & Sales Analyst</h2>
+          <span class="position">SEVITSIL – Suresh Enterprises, Mehsana, India</span>
+          <p class="mt-4">Responsibilities:
+            <ul>
+              <li>Developed interactive dashboards using Tableau and Excel to automate sales reporting, reducing manual effort by 40%.</li>
+              <li>Extracted and cleaned data from ERP systems using SQL, improving demand forecasting accuracy.</li>
+              <li>Delivered strategic insights via competitor and pricing analysis, driving a 12% increase in conversion rates.</li>
+              <li>Analyzed sales performance data to optimize pricing and forecasting strategies across business units.</li>
+              <li>Supported sales and marketing teams with real-time reporting, client lead analysis, and performance dashboards.</li>
+            </ul>
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<br><br>
+    <br><br>
 
-<div class="row">
-  <h1 class="big-4">Education</h1>
-  <div class="underline"></div>
-</div>
-<br>
-
-<div class="row">
-  <div class="col-md-6">
-    <div class="resume-wrap ftco-animate">
-      <span class="date">May 2025</span>
-      <h2>MS in Business Analytics</h2>
-      <span class="position">Montclair State University, NJ, USA</span>
-      <p class="mt-4">GPA: 4.0/4.0</p>
+    <div class="row">
+      <h1 class="big-4">Education</h1>
+      <div class="underline"></div>
     </div>
-  </div>
+    <br>
 
-  <div class="col-md-6">
-    <div class="resume-wrap ftco-animate">
-      <span class="date">May 2015</span>
-      <h2>Bachelor of Engineering, Mechanical</h2>
-      <span class="position">GPERI, Gujarat, INDIA</span>
-      <p class="mt-4">GPA: 3.2/4.0</p>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="resume-wrap ftco-animate">
+          <span class="date">May 2025</span>
+          <h2>MS in Business Analytics</h2>
+          <span class="position">Montclair State University, NJ, USA</span>
+          <p class="mt-4">GPA: 4.0/4.0</p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="resume-wrap ftco-animate">
+          <span class="date">May 2015</span>
+          <h2>Bachelor of Engineering, Mechanical</h2>
+          <span class="position">GPERI, Gujarat, INDIA</span>
+          <p class="mt-4">GPA: 3.2/4.0</p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-    		<div class="row justify-content-center mt-5">
-    			<div class="col-md-6 text-center ftco-animate">
-    				<p><a href="https://drive.google.com/file/d/1O9yBFuui176789vn7SbpFpiRYwCkt2QC/view?usp=sharing" class="btn btn-primary py-4 px-5">Download CV</a></p>
-    			</div>
-    		</div>
-    	</div>
+        <div class="row justify-content-center mt-5">
+          <div class="col-md-6 text-center ftco-animate">
+            <p><a href="https://drive.google.com/file/d/1O9yBFuui176789vn7SbpFpiRYwCkt2QC/view?usp=sharing" class="btn btn-primary py-4 px-5" target="_blank" rel="noopener noreferrer">Download CV</a></p>
+          </div>
+        </div>
+      </div>
     </section>
 
-   
+    
 
     <section class="ftco-section" id="project-section">
       <div class="container">
@@ -417,85 +461,226 @@
         </div>
         <div class="row d-flex">
           <div class="col-md-4 d-flex ftco-animate">
-  <div class="blog-entry justify-content-end">
-    <a href="https://github.com/jayminmech7/sql-data-warehouse-project">
-      <img src="images/proj_1.png" alt="Three-Layer Data Warehouse" class="project-image">
-    </a>
-    <div class="text mt-3 float-right d-block">
-      <h3 class="heading">
-        <a href="https://github.com/jayminmech7/sql-data-warehouse-project">Three-Layer Data Warehouse</a>
-      </h3>
-      <p>
-        Designed and implemented a robust data warehouse using a layered (Bronze, Silver, Gold) architecture to integrate and transform ERP and CRM data.
-        This solution delivers high-quality, business-ready data—optimized for scalable analytics, BI, and machine learning.
-      </p>
-    </div>
-  </div>
-</div>
-        <div class="col-md-4 d-flex ftco-animate">
-  <div class="blog-entry justify-content-end">
-    <a href="https://github.com/jayminmech7/excel-sales-dashboard">
-      <img src="images/proj_2.png" alt="Sales & Profit Data Insights" class="project-image">
-    </a>
-    <div class="text mt-3 float-right d-block">
-      <h3 class="heading">
-        <a href="https://github.com/jayminmech7/sql-data-warehouse-project">Sales & Profit Data Insights</a>
-      </h3>
-      <p>
-        Designed and visualized actionable insights using structured sales data across customer segments, regions, and product categories. Built interactive dashboards for sales trends, profit analysis, and top-performing categories—enabling data-driven decision-making.
-      </p>
-    </div>
-  </div>
-</div>
+            <div class="blog-entry justify-content-end">
+              <a href="https://github.com/jayminmech7/sql-data-warehouse-project" target="_blank" rel="noopener noreferrer">
+                <img src="images/proj_1.png" alt="Three-Layer Data Warehouse" class="project-image">
+              </a>
+              <div class="text mt-3 float-right d-block">
+                <h3 class="heading">
+                  <a href="https://github.com/jayminmech7/sql-data-warehouse-project" target="_blank" rel="noopener noreferrer">Three-Layer Data Warehouse</a>
+                </h3>
+                <p>
+                  Designed and implemented a robust data warehouse using a layered (Bronze, Silver, Gold) architecture to integrate and transform ERP and CRM data.
+                  This solution delivers high-quality, business-ready data—optimized for scalable analytics, BI, and machine learning.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+            <div class="blog-entry justify-content-end">
+              <a href="https://github.com/jayminmech7/excel-sales-dashboard" target="_blank" rel="noopener noreferrer">
+                <img src="images/proj_2.png" alt="Sales & Profit Data Insights" class="project-image">
+              </a>
+              <div class="text mt-3 float-right d-block">
+                <h3 class="heading">
+                  <a href="https://github.com/jayminmech7/excel-sales-dashboard" target="_blank" rel="noopener noreferrer">Sales & Profit Data Insights</a> {/* Corrected Link */}
+                </h3>
+                <p>
+                  Designed and visualized actionable insights using structured sales data across customer segments, regions, and product categories. Built interactive dashboards for sales trends, profit analysis, and top-performing categories—enabling data-driven decision-making.
+                </p>
+              </div>
+            </div>
+          </div>
 
-         <div class="col-md-4 d-flex ftco-animate">
-  <div class="blog-entry justify-content-end">
-    <a href="https://github.com/jayminmech7/sql-data-warehouse-project">
-      <img src="images/proj_3.jpg" alt="Three-Layer Data Warehouse" class="project-image">
-    </a>
-    <div class="text mt-3 float-right d-block">
-      <h3 class="heading">
-        <a href="https://github.com/jayminmech7/sql-data-warehouse-project">Three-Layer Data Warehouse</a>
-      </h3>
-      <p>
-        Designed and implemented a robust data warehouse using a layered (Bronze, Silver, Gold) architecture to integrate and transform ERP and CRM data.
-        This solution delivers high-quality, business-ready data—optimized for scalable analytics, BI, and machine learning.
-      </p>
-    </div>
-  </div>
-</div>
-	<br>
-		<!-- added justify-content-center to center align the last two projects -->
-		<!-- <div class="row d-flex justify-content-center">  
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-				<a href="https://github.com/rishabhnmishra/sales_forecasting/tree/main" class="block-20 zoom-effect" style="background-image: url('images/proj_4.jpg');">
-				</a>
-				<div class="text mt-3 float-right d-block">
-  
-				  <h3 class="heading"><a href="https://github.com/rishabhnmishra/sales_forecasting/tree/main">Sales Forecast- Time Series Forecasting</a></h3>
-				  <p>Used multiple machine learning models to forecast sales (retail store) and performed time series analysis.</p>
-				</div>
-			  </div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-				<a href="https://github.com/rishabhnmishra/customer_segmentation/blob/main/Customer_Segmentation-final.ipynb" class="block-20 zoom-effect" style="background-image: url('images/proj_5.jpg');">
-				</a>
-				<div class="text mt-3 float-right d-block">
-  
-				  <h3 class="heading"><a href="https://github.com/rishabhnmishra/customer_segmentation/blob/main/Customer_Segmentation-final.ipynb">Customer Segmentation using clustering model</a></h3>
-				  <p>Developed a ML model to give various recommendations of financial products &amp; services on target customer groups.</p>
-				</div>
-			  </div>
-			</div>
-		 </div> -->
-	  </div>
+          <div class="col-md-4 d-flex ftco-animate">
+            <div class="blog-entry justify-content-end">
+              <a href="YOUR_PROJECT_3_GITHUB_LINK_HERE" target="_blank" rel="noopener noreferrer"> {/* !!! UPDATE THIS LINK !!! */}
+                <img src="images/proj_3.jpg" alt="Project 3 Title Placeholder" class="project-image"> {/* Ensure images/proj_3.jpg is correct */}
+              </a>
+              <div class="text mt-3 float-right d-block">
+                <h3 class="heading">
+                  <a href="YOUR_PROJECT_3_GITHUB_LINK_HERE" target="_blank" rel="noopener noreferrer">Project 3 Title Placeholder</a> {/* !!! UPDATE THIS TITLE & LINK !!! */}
+                </h3>
+                <p>
+                  Brief description of Project 3. Highlight key technologies and achievements. {/* !!! UPDATE THIS DESCRIPTION !!! */}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-	<section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
+    <section class="ftco-section" id="certificate-section">
       <div class="container">
-		<div class="row d-md-flex align-items-center">
+        <div class="row justify-content-center mb-5 pb-5">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <h1 class="big big-2">Certificates</h1>
+            <h2 class="mb-4">My Certificates</h2>
+            <p>Here are some of my key certifications which showcase my dedication to continuous learning and expertise in the field.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="owl-carousel certificate-carousel ftco-animate">
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                  <a href="images/certificates/certificate_1_large.jpg" class="image-popup" title="View Certificate 1">
+                    <img src="images/certificates/certificate_1.jpg" alt="Certificate 1 Title" class="project-image img-fluid">
+                  </a>
+                  <div class="text mt-3 text-center">
+                    <h3 class="heading">Certificate Title 1</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                  <a href="images/certificates/certificate_2_large.jpg" class="image-popup" title="View Certificate 2">
+                    <img src="images/certificates/certificate_2.jpg" alt="Certificate 2 Title" class="project-image img-fluid">
+                  </a>
+                  <div class="text mt-3 text-center">
+                    <h3 class="heading">Certificate Title 2</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                  <a href="images/certificates/certificate_3_large.jpg" class="image-popup" title="View Certificate 3">
+                    <img src="images/certificates/certificate_3.jpg" alt="Certificate 3 Title" class="project-image img-fluid">
+                  </a>
+                  <div class="text mt-3 text-center">
+                    <h3 class="heading">Certificate Title 3</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                  <a href="images/certificates/certificate_4_large.jpg" class="image-popup" title="View Certificate 4">
+                    <img src="images/certificates/certificate_4.jpg" alt="Certificate 4 Title" class="project-image img-fluid">
+                  </a>
+                  <div class="text mt-3 text-center">
+                    <h3 class="heading">Certificate Title 4</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                  <a href="images/certificates/certificate_5_large.jpg" class="image-popup" title="View Certificate 5">
+                    <img src="images/certificates/certificate_5.jpg" alt="Certificate 5 Title" class="project-image img-fluid">
+                  </a>
+                  <div class="text mt-3 text-center">
+                    <h3 class="heading">Certificate Title 5</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                   <a href="images/certificates/certificate_6_large.jpg" class="image-popup" title="View Certificate 6">
+                    <img src="images/certificates/certificate_6.jpg" alt="Certificate 6 Title" class="project-image img-fluid">
+                  </a>
+                  <div class="text mt-3 text-center">
+                    <h3 class="heading">Certificate Title 6</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                  <a href="images/certificates/certificate_7_large.jpg" class="image-popup" title="View Certificate 7">
+                    <img src="images/certificates/certificate_7.jpg" alt="Certificate 7 Title" class="project-image img-fluid">
+                  </a>
+                  <div class="text mt-3 text-center">
+                    <h3 class="heading">Certificate Title 7</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                  <a href="images/certificates/certificate_8_large.jpg" class="image-popup" title="View Certificate 8">
+                    <img src="images/certificates/certificate_8.jpg" alt="Certificate 8 Title" class="project-image img-fluid">
+                  </a>
+                  <div class="text mt-3 text-center">
+                    <h3 class="heading">Certificate Title 8</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                  <a href="images/certificates/certificate_9_large.jpg" class="image-popup" title="View Certificate 9">
+                    <img src="images/certificates/certificate_9.jpg" alt="Certificate 9 Title" class="project-image img-fluid">
+                  </a>
+                  <div class="text mt-3 text-center">
+                    <h3 class="heading">Certificate Title 9</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                  <a href="images/certificates/certificate_10_large.jpg" class="image-popup" title="View Certificate 10">
+                    <img src="images/certificates/certificate_10.jpg" alt="Certificate 10 Title" class="project-image img-fluid">
+                  </a>
+                  <div class="text mt-3 text-center">
+                    <h3 class="heading">Certificate Title 10</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                   <a href="images/certificates/certificate_11_large.jpg" class="image-popup" title="View Certificate 11">
+                    <img src="images/certificates/certificate_11.jpg" alt="Certificate 11 Title" class="project-image img-fluid">
+                  </a>
+                  <div class="text mt-3 text-center">
+                    <h3 class="heading">Certificate Title 11</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                  <a href="images/certificates/certificate_12_large.jpg" class="image-popup" title="View Certificate 12">
+                    <img src="images/certificates/certificate_12.jpg" alt="Certificate 12 Title" class="project-image img-fluid">
+                  </a>
+                  <div class="text mt-3 text-center">
+                    <h3 class="heading">Certificate Title 12</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                  <a href="images/certificates/certificate_13_large.jpg" class="image-popup" title="View Certificate 13">
+                    <img src="images/certificates/certificate_13.jpg" alt="Certificate 13 Title" class="project-image img-fluid">
+                  </a>
+                  <div class="text mt-3 text-center">
+                    <h3 class="heading">Certificate Title 13</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                  <a href="images/certificates/certificate_14_large.jpg" class="image-popup" title="View Certificate 14">
+                    <img src="images/certificates/certificate_14.jpg" alt="Certificate 14 Title" class="project-image img-fluid">
+                  </a>
+                  <div class="text mt-3 text-center">
+                    <h3 class="heading">Certificate Title 14</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                  <a href="images/certificates/certificate_15_large.jpg" class="image-popup" title="View Certificate 15">
+                    <img src="images/certificates/certificate_15.jpg" alt="Certificate 15 Title" class="project-image img-fluid">
+                  </a>
+                  <div class="text mt-3 text-center">
+                    <h3 class="heading">Certificate Title 15</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
+      <div class="container">
+    <div class="row d-md-flex align-items-center">
           <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
             <div class="block-18">
               <div class="text">
@@ -515,8 +700,7 @@
           <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
             <div class="block-18">
               <div class="text">
-                <strong class="number" data-number="10">0</strong>
-                <span>Certifications</span>
+                <strong class="number" data-number="15">0</strong> <span>Certifications</span>
               </div>
             </div>
           </div>
@@ -530,27 +714,25 @@
           </div>
         </div>
       </div>
-	
-	  <div class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.jpg)">
-			<!-- <div class="container"> -->
-				<div class="row justify-content-center">
-					<div class="col-md-7 ftco-animate text-center">
-						<h2>More projects on GitHub</span> </h2>
-						<div class="heading"> <h4> I love to solve business problems &amp; uncover hidden data stories </h4>
-						<br>
-						<p><a href="https://github.com/jayminmech7" class="btn btn-primary py-3 px-5">GitHub Link</a></p>
-						</div>
-					</div>
-				</div>
-			<!-- </div> -->
-		</div>
-	</section>
+    
+    <div class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.jpg)">
+      <div class="row justify-content-center">
+          <div class="col-md-7 ftco-animate text-center">
+            <h2>More projects on GitHub</span> </h2>
+            <div class="heading"> <h4> I love to solve business problems &amp; uncover hidden data stories </h4>
+            <br>
+            <p><a href="https://github.com/jayminmech7" class="btn btn-primary py-3 px-5" target="_blank" rel="noopener noreferrer">GitHub Link</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
 
 
 
     <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
       <div class="container">
-      	<div class="row justify-content-center mb-5 pb-3">
+        <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section text-center ftco-animate">
             <h1 class="big big-2">Contact</h1>
             <h2 class="mb-4">Contact Me</h2>
@@ -560,80 +742,69 @@
 
         <div class="row d-flex contact-info mb-5">
           <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-map-signs"></span>
-          		</div>
-          		<h3 class="mb-4">Address</h3>
-	            <p>New York, USA</p>
-	          </div>
+            <div class="align-self-stretch box p-4 text-center">
+              <div class="icon d-flex align-items-center justify-content-center">
+                <span class="icon-map-signs"></span>
+              </div>
+              <h3 class="mb-4">Address</h3>
+              <p>New York, USA</p>
+            </div>
           </div>
           <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-phone2"></span>
-          		</div>
-          		<h3 class="mb-4">Contact Number</h3>
-	            <p><a href="tel://0101010101">+1 347 925 3345</a></p>
-	          </div>
+            <div class="align-self-stretch box p-4 text-center">
+              <div class="icon d-flex align-items-center justify-content-center">
+                <span class="icon-phone2"></span>
+              </div>
+              <h3 class="mb-4">Contact Number</h3>
+              <p><a href="tel://+13479253345">+1 347 925 3345</a></p>
+            </div>
           </div>
           <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-paper-plane"></span>
-          		</div>
-          		<h3 class="mb-4">Email Address</h3>
-	            <p><a href="mailto:info@yoursite.com">jaymin.mech7@gmail.com</a></p>
-	          </div>
+            <div class="align-self-stretch box p-4 text-center">
+              <div class="icon d-flex align-items-center justify-content-center">
+                <span class="icon-paper-plane"></span>
+              </div>
+              <h3 class="mb-4">Email Address</h3>
+              <p><a href="mailto:jaymin.mech7@gmail.com">jaymin.mech7@gmail.com</a></p>
+            </div>
           </div>
           <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-globe"></span>
-          		</div>
-          		<h3 class="mb-4">Download Resume</h3>
-	            <p><a href="https://drive.google.com/file/d/1O9yBFuui176789vn7SbpFpiRYwCkt2QC/view">Resume</a></p>
-	          </div>
+            <div class="align-self-stretch box p-4 text-center">
+              <div class="icon d-flex align-items-center justify-content-center">
+                <span class="icon-globe"></span>
+              </div>
+              <h3 class="mb-4">Download Resume</h3>
+              <p><a href="https://drive.google.com/file/d/1O9yBFuui176789vn7SbpFpiRYwCkt2QC/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a></p>
+            </div>
           </div>
 
-		  <div class="container">
-			<br>
-			<br>
-			<!-- <div class="row justify-content-center">
-				<div class="col-md-7 ftco-animate text-center">
-					<h2>Have a<span> Question?  </span> <a href="https://forms.gle/uLaTShUKXraAvHJ77" class="btn btn-primary py-3 px-5">Click Here</a> </h2>
-				</div>
-			</div> -->
-				<br>
-					<ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
-					  <li class="ftco-animate normal-txt">Find me on  </li>
-					  <li class="ftco-animate"><a href="https://www.linkedin.com/in/jaymin7/"><span class="icon-linkedin"></span></a></li>  
-					</ul>
-				<br>
-		   </div>
-   </div>
- </section>
+        <div class="container">
+      <br>
+      <br>
+      <br>
+          <ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
+            <li class="ftco-animate normal-txt">Find me on  </li>
+            <li class="ftco-animate"><a href="https://www.linkedin.com/in/jaymin7/" target="_blank" rel="noopener noreferrer"><span class="icon-linkedin"></span></a></li>  
+          </ul>
+        <br>
+        </div>
+    </div>
+  </section>
 
 
- 
-	
-    <footer class="ftco-footer ftco-section">
-		<div class="container">
-		  <div class="row">
-			<div class="col-md-12 text-center">
   
-			  <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-<p>
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |
-  This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by 
-  <a href="https://colorlib.com" target="_blank">Colorlib</a>
+    <footer class="ftco-footer ftco-section">
+    <div class="container">
+      <div class="row">
+      <div class="col-md-12 text-center">
+  
+        <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" rel="noopener noreferrer">Colorlib</a>
 </p>
-		  </div>
-		</div>
-	  </footer>
+      </div>
+    </div>
+    </footer>
 
 
-  <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
@@ -651,6 +822,59 @@
   <script src="js/scrollax.min.js"></script>
   
   <script src="js/main.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      if ($('.certificate-carousel').length > 0) {
+        $('.certificate-carousel').owlCarousel({
+          loop:true, // Loop through certificates if enough items
+          margin:30, // Space between items
+          nav:true, // Show next/prev buttons
+          dots: true, // Show dots navigation
+          autoplay: true, // Autoplay the carousel
+          autoplayTimeout: 5000, // Autoplay interval 5 seconds
+          autoplayHoverPause: true, // Pause on hover
+          responsive:{
+            0:{
+              items:1 // Show 1 item on small screens
+            },
+            768:{ // Changed from 600 to better match Bootstrap's md breakpoint
+              items:2 // Show 2 items on medium screens
+            },
+            992:{ // Changed from 1000 to better match Bootstrap's lg breakpoint
+              items:3 // Show 3 items on large screens
+            }
+          },
+          navText: ["<span class='ion-ios-arrow-back'></span>", "<span class='ion-ios-arrow-forward'></span>"] // Custom nav icons
+        });
+      }
+  
+      // Initialize Magnific Popup for certificate images within the carousel
+      if ($('.certificate-carousel .image-popup').length > 0) {
+        $('.certificate-carousel').magnificPopup({
+            delegate: 'a.image-popup', // child items selector, by clicking on it popup will open
+            type: 'image',
+            gallery:{
+                enabled:true
+            },
+            mainClass: 'mfp-with-zoom mfp-img-mobile', 
+            zoom: {
+                enabled: true, 
+                duration: 300, 
+                easing: 'ease-in-out',
+                opener: function(openerElement) {
+                    return openerElement.is('img') ? openerElement : openerElement.find('img');
+                }
+            }
+        });
+      }
+
+      // Optional: If you have other image popups outside the carousel, initialize them separately
+      // Example: For project images if they also use 'image-popup' class but are not in a carousel
+      // $('.project-section .image-popup').magnificPopup({ type:'image', gallery:{enabled:true}, ... });
+
+    });
+  </script>
     
   </body>
 </html>

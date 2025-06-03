@@ -171,26 +171,47 @@
     background: #ffbd39; /* Active dot color */
 }
 
-  /*======================================
-//--//-->   ABOUT
-======================================*/
-/* ... your existing styles ... */
+/* --- START: CSS for Even Spacing and Card Heights --- */
 
-.project-image:hover {
-  transform: scale(1.1);
+/* Removed the conflicting custom padding-top for certificate-section */
+/* #certificate-section {
+  padding-top: 0.2em;
+} */
+
+/* Ensure project and certificate cards have even heights */
+.project-section .col-md-4,
+.certificate-carousel .item {
+    display: flex; /* Make the column/item a flex container */
+    flex-direction: column; /* Stack content vertically */
 }
 
-/* Styling for Owl Carousel Nav Buttons */
-/* ... your existing carousel styles ... */
-
-.certificate-carousel .owl-dots .owl-dot.active span {
-    background: #ffbd39; /* Active dot color */
+.project-section .blog-entry,
+.certificate-carousel .item .blog-entry {
+    display: flex; /* Make the blog-entry itself a flex container */
+    flex-direction: column; /* Stack its content vertically */
+    flex-grow: 1; /* Allow it to grow and fill the height of its parent column */
+    height: 100%; /* Ensure it takes up the full height available in its column */
 }
 
-/* ADD THIS CSS RULE TO REDUCE THE GAP */
-#certificate-section {
-  padding-top: 0.2em; /* Adjust this value. Default might be 6em or 7em. Try values like 2em, 3em, or 4em until the gap looks good to you. */
+.project-section .blog-entry .text,
+.certificate-carousel .item .blog-entry .text {
+    flex-grow: 1; /* Allow the text content block to expand */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to the top */
 }
+
+.project-section .blog-entry p,
+.certificate-carousel .item .blog-entry p {
+    /* If you want all paragraphs to take up equal space and possibly truncate */
+    /* flex-grow: 1; */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+    /* display: -webkit-box; */
+    /* -webkit-line-clamp: 3; */ /* Limit to 3 lines, adjust as needed */
+    /* -webkit-box-orient: vertical; */
+}
+/* --- END: CSS for Even Spacing and Card Heights --- */
   
 </style>
 
@@ -471,7 +492,7 @@
 
     
 
-    <section class="ftco-section" id="project-section">
+    <section class="ftco-section ftco-no-pb" id="project-section"> {/* Added ftco-no-pb here */}
       <div class="container">
         <div class="row justify-content-center mb-5 pb-5">
           <div class="col-md-7 heading-section text-center ftco-animate">
@@ -527,9 +548,11 @@
                 </p>
               </div>
             </div>
+          </div>
+        </div>
     </section>
 
-    <section class="ftco-section" id="certificate-section">
+    <section class="ftco-section ftco-no-pb" id="certificate-section"> {/* Added ftco-no-pb here */}
       <div class="container">
         <div class="row justify-content-center mb-5 pb-5">
           <div class="col-md-7 heading-section text-center ftco-animate">
@@ -611,7 +634,8 @@
                   </div>
                 </div>
               </div>
-             
+              
+            </div>
           </div>
         </div>
       </div>
@@ -664,7 +688,7 @@
           </div>
         </div>
       </div>
-  </section>
+    </section>
 
 
 
@@ -717,14 +741,14 @@
           </div>
 
         <div class="container">
-      <br>
-      <br>
-      <br>
+          <br>
+          <br>
+          <br>
           <ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
             <li class="ftco-animate normal-txt">Find me on  </li>
             <li class="ftco-animate"><a href="https://www.linkedin.com/in/jaymin7/" target="_blank" rel="noopener noreferrer"><span class="icon-linkedin"></span></a></li>  
           </ul>
-        <br>
+          <br>
         </div>
     </div>
   </section>
@@ -806,11 +830,6 @@
             }
         });
       }
-
-      // Optional: If you have other image popups outside the carousel, initialize them separately
-      // Example: For project images if they also use 'image-popup' class but are not in a carousel
-      // $('.project-section .image-popup').magnificPopup({ type:'image', gallery:{enabled:true}, ... });
-
     });
   </script>
     

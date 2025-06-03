@@ -122,7 +122,8 @@
 }
 
 /* Styling for Owl Carousel Nav Buttons */
-.certificate-carousel .owl-nav {
+.certificate-carousel .owl-nav,
+.project-carousel .owl-nav { /* Apply to both carousels */
     position: absolute;
     top: 50%;
     width: 100%;
@@ -133,7 +134,9 @@
 }
 
 .certificate-carousel .owl-nav button.owl-prev,
-.certificate-carousel .owl-nav button.owl-next {
+.certificate-carousel .owl-nav button.owl-next,
+.project-carousel .owl-nav button.owl-prev,
+.project-carousel .owl-nav button.owl-next { /* Apply to both carousels */
     font-size: 2rem; /* Adjust size as needed */
     color: #ffbd39; /* Or your preferred color */
     background: rgba(255, 255, 255, 0.5); /* Optional: slight background for visibility */
@@ -145,29 +148,36 @@
     pointer-events: all; /* Make buttons clickable */
     transition: background-color 0.3s ease, color 0.3s ease;
 }
-.certificate-carousel .owl-nav button.owl-prev {
+.certificate-carousel .owl-nav button.owl-prev,
+.project-carousel .owl-nav button.owl-prev { /* Apply to both carousels */
     margin-left: -20px; /* Adjust to position outside or inside */
 }
-.certificate-carousel .owl-nav button.owl-next {
+.certificate-carousel .owl-nav button.owl-next,
+.project-carousel .owl-nav button.owl-next { /* Apply to both carousels */
     margin-right: -20px; /* Adjust to position outside or inside */
 }
 
 .certificate-carousel .owl-nav button.owl-prev:hover,
-.certificate-carousel .owl-nav button.owl-next:hover {
+.certificate-carousel .owl-nav button.owl-next:hover,
+.project-carousel .owl-nav button.owl-prev:hover,
+.project-carousel .owl-nav button.owl-next:hover { /* Apply to both carousels */
     background-color: #ffbd39;
     color: #fff;
 }
 
-.certificate-carousel .owl-dots {
+.certificate-carousel .owl-dots,
+.project-carousel .owl-dots { /* Apply to both carousels */
     text-align: center;
     margin-top: 20px;
 }
 
-.certificate-carousel .owl-dots .owl-dot span {
+.certificate-carousel .owl-dots .owl-dot span,
+.project-carousel .owl-dots .owl-dot span { /* Apply to both carousels */
     background: #ccc; /* Default dot color */
 }
 
-.certificate-carousel .owl-dots .owl-dot.active span {
+.certificate-carousel .owl-dots .owl-dot.active span,
+.project-carousel .owl-dots .owl-dot.active span { /* Apply to both carousels */
     background: #ffbd39; /* Active dot color */
 }
 
@@ -179,13 +189,14 @@
 } */
 
 /* Ensure project and certificate cards have even heights */
-.project-section .col-md-4,
+/* Apply flexbox to the 'item' directly as it's now the immediate flex child */
+.project-carousel .item,
 .certificate-carousel .item {
-    display: flex; /* Make the column/item a flex container */
+    display: flex; /* Make the item a flex container */
     flex-direction: column; /* Stack content vertically */
 }
 
-.project-section .blog-entry,
+.project-carousel .item .blog-entry,
 .certificate-carousel .item .blog-entry {
     display: flex; /* Make the blog-entry itself a flex container */
     flex-direction: column; /* Stack its content vertically */
@@ -193,7 +204,7 @@
     height: 100%; /* Ensure it takes up the full height available in its column */
 }
 
-.project-section .blog-entry .text,
+.project-carousel .item .blog-entry .text,
 .certificate-carousel .item .blog-entry .text {
     flex-grow: 1; /* Allow the text content block to expand */
     display: flex;
@@ -201,7 +212,7 @@
     justify-content: flex-start; /* Align content to the top */
 }
 
-.project-section .blog-entry p,
+.project-carousel .item .blog-entry p,
 .certificate-carousel .item .blog-entry p {
     /* Optional: If you want all paragraphs to take up equal space and possibly truncate */
     /* flex-grow: 1; */
@@ -492,7 +503,7 @@
 
     
 
-    <section class="ftco-section ftco-no-pb" id="project-section">
+    <section class="ftco-section ftco-no-pb" id="project-section"> {/* Added ftco-no-pb here */}
       <div class="container">
         <div class="row justify-content-center mb-5 pb-5">
           <div class="col-md-7 heading-section text-center ftco-animate">
@@ -501,58 +512,120 @@
             <p>Below are my Data Analytics projects on SQL, Python, Power BI & Advance Excel.</p>
           </div>
         </div>
-        <div class="row d-flex">
-          <div class="col-md-4 d-flex ftco-animate">
-            <div class="blog-entry justify-content-end">
-              <a href="https://github.com/jayminmech7/sql-data-warehouse-project" target="_blank" rel="noopener noreferrer">
-                <img src="images/proj_1.png" alt="Three-Layer Data Warehouse" class="project-image">
-              </a>
-              <div class="text mt-3 float-right d-block">
-                <h3 class="heading">
-                  <a href="https://github.com/jayminmech7/sql-data-warehouse-project" target="_blank" rel="noopener noreferrer">Three-Layer Data Warehouse</a>
-                </h3>
-                <p>
-                  Designed and implemented a robust data warehouse using a layered (Bronze, Silver, Gold) architecture to integrate and transform ERP and CRM data.
-                  This solution delivers high-quality, business-ready data—optimized for scalable analytics, BI, and machine learning.
-                </p>
+        <div class="row"> {/* This row will now contain the Owl Carousel */}
+          <div class="col-md-12"> {/* Full width column for the carousel */}
+            <div class="owl-carousel project-carousel ftco-animate"> {/* Owl Carousel container */}
+              
+              {/* Project 1 */}
+              <div class="item"> {/* Each project is now an 'item' */}
+                <div class="blog-entry justify-content-end">
+                  <a href="https://github.com/jayminmech7/sql-data-warehouse-project" target="_blank" rel="noopener noreferrer">
+                    <img src="images/proj_1.png" alt="Three-Layer Data Warehouse" class="project-image">
+                  </a>
+                  <div class="text mt-3 float-right d-block">
+                    <h3 class="heading">
+                      <a href="https://github.com/jayminmech7/sql-data-warehouse-project" target="_blank" rel="noopener noreferrer">Three-Layer Data Warehouse</a>
+                    </h3>
+                    <p>
+                      Designed and implemented a robust data warehouse using a layered (Bronze, Silver, Gold) architecture to integrate and transform ERP and CRM data.
+                      This solution delivers high-quality, business-ready data—optimized for scalable analytics, BI, and machine learning.
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-            <div class="blog-entry justify-content-end">
-              <a href="https://github.com/jayminmech7/excel-sales-dashboard" target="_blank" rel="noopener noreferrer">
-                <img src="images/proj_2.png" alt="Sales & Profit Data Insights" class="project-image">
-              </a>
-              <div class="text mt-3 float-right d-block">
-                <h3 class="heading">
-                  <a href="https://github.com/jayminmech7/excel-sales-dashboard" target="_blank" rel="noopener noreferrer">Sales & Profit Data Insights</a>
-                </h3>
-                <p>
-                  Designed and visualized actionable insights using structured sales data across customer segments, regions, and product categories. Built interactive dashboards for sales trends, profit analysis, and top-performing categories—enabling data-driven decision-making.
-                </p>
-              </div>
-            </div>
-          </div>
 
-          <div class="col-md-4 d-flex ftco-animate">
-            <div class="blog-entry justify-content-end">
-              <a href="https://github.com/jayminmech7/Customer_Churn_Prediction-Telecom_Sector" target="_blank" rel="noopener noreferrer">
-                <img src="images/proj_3.png" alt="Telecom Churn Prediction" class="project-image">
-              </a>
-              <div class="text mt-3 float-right d-block">
-                <h3 class="heading">
-                  <a href="https://github.com/jayminmech7/Customer_Churn_Prediction-Telecom_Sector" target="_blank" rel="noopener noreferrer">Telecom Churn Prediction</a>
-                </h3>
-                <p>
-                  Designed and developed a machine learning solution to predict customer churn using telecom usage, demographic, and billing data. Built an end-to-end pipeline with EDA, feature engineering, and multiple classification models—enabling retention strategies and business decision-making.
-                </p>
+              {/* Project 2 */}
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                  <a href="https://github.com/jayminmech7/excel-sales-dashboard" target="_blank" rel="noopener noreferrer">
+                    <img src="images/proj_2.png" alt="Sales & Profit Data Insights" class="project-image">
+                  </a>
+                  <div class="text mt-3 float-right d-block">
+                    <h3 class="heading">
+                      <a href="https://github.com/jayminmech7/excel-sales-dashboard" target="_blank" rel="noopener noreferrer">Sales & Profit Data Insights</a>
+                    </h3>
+                    <p>
+                      Designed and visualized actionable insights using structured sales data across customer segments, regions, and product categories. Built interactive dashboards for sales trends, profit analysis, and top-performing categories—enabling data-driven decision-making.
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
+
+              {/* Project 3 */}
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                  <a href="https://github.com/jayminmech7/Customer_Churn_Prediction-Telecom_Sector" target="_blank" rel="noopener noreferrer">
+                    <img src="images/proj_3.png" alt="Telecom Churn Prediction" class="project-image">
+                  </a>
+                  <div class="text mt-3 float-right d-block">
+                    <h3 class="heading">
+                      <a href="https://github.com/jayminmech7/Customer_Churn_Prediction-Telecom_Sector" target="_blank" rel="noopener noreferrer">Telecom Churn Prediction</a>
+                    </h3>
+                    <p>
+                      Designed and developed a machine learning solution to predict customer churn using telecom usage, demographic, and billing data. Built an end-to-end pipeline with EDA, feature engineering, and multiple classification models—enabling retention strategies and business decision-making.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Project 4 (Duplicated - UPDATE THIS!) */}
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                  <a href="YOUR_PROJECT_4_GITHUB_LINK_HERE" target="_blank" rel="noopener noreferrer">
+                    <img src="images/proj_4.png" alt="Project 4 Title Placeholder" class="project-image"> {/* Make sure you have proj_4.png */}
+                  </a>
+                  <div class="text mt-3 float-right d-block">
+                    <h3 class="heading">
+                      <a href="YOUR_PROJECT_4_GITHUB_LINK_HERE" target="_blank" rel="noopener noreferrer">Project 4 Title Placeholder</a>
+                    </h3>
+                    <p>
+                      This is a duplicated project. Please update this description, image path, title, and GitHub link to reflect your actual fourth project.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Project 5 (Duplicated - UPDATE THIS!) */}
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                  <a href="YOUR_PROJECT_5_GITHUB_LINK_HERE" target="_blank" rel="noopener noreferrer">
+                    <img src="images/proj_5.png" alt="Project 5 Title Placeholder" class="project-image"> {/* Make sure you have proj_5.png */}
+                  </a>
+                  <div class="text mt-3 float-right d-block">
+                    <h3 class="heading">
+                      <a href="YOUR_PROJECT_5_GITHUB_LINK_HERE" target="_blank" rel="noopener noreferrer">Project 5 Title Placeholder</a>
+                    </h3>
+                    <p>
+                      This is a duplicated project. Please update this description, image path, title, and GitHub link to reflect your actual fifth project.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Project 6 (Duplicated - UPDATE THIS!) */}
+              <div class="item">
+                <div class="blog-entry justify-content-end">
+                  <a href="YOUR_PROJECT_6_GITHUB_LINK_HERE" target="_blank" rel="noopener noreferrer">
+                    <img src="images/proj_6.png" alt="Project 6 Title Placeholder" class="project-image"> {/* Make sure you have proj_6.png */}
+                  </a>
+                  <div class="text mt-3 float-right d-block">
+                    <h3 class="heading">
+                      <a href="YOUR_PROJECT_6_GITHUB_LINK_HERE" target="_blank" rel="noopener noreferrer">Project 6 Title Placeholder</a>
+                    </h3>
+                    <p>
+                      This is a duplicated project. Please update this description, image path, title, and GitHub link to reflect your actual sixth project.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div> {/* .owl-carousel */}
+          </div> {/* .col-md-12 */}
+        </div> {/* .row */}
     </section>
 
-    <section class="ftco-section ftco-no-pb" id="certificate-section"> 
+    <!-- CERTIFICATE SECTION START -->
+    <section class="ftco-section ftco-no-pb" id="certificate-section"> {/* Added ftco-no-pb here */}
       <div class="container">
         <div class="row justify-content-center mb-5 pb-5">
           <div class="col-md-7 heading-section text-center ftco-animate">
@@ -564,6 +637,8 @@
         <div class="row">
           <div class="col-md-12">
             <div class="owl-carousel certificate-carousel ftco-animate">
+              <!-- !!! REPLACE with your actual certificate details and images !!! -->
+              <!-- Certificate 1 -->
               <div class="item">
                 <div class="blog-entry justify-content-end">
                   <a href="images/certificates/certificate_1_large.png" class="image-popup" title="View Certificate 1">
@@ -574,6 +649,7 @@
                   </div>
                 </div>
               </div>
+              <!-- Certificate 2 -->
               <div class="item">
                 <div class="blog-entry justify-content-end">
                   <a href="images/certificates/certificate_2_large.png" class="image-popup" title="Data Analysis with Python">
@@ -584,6 +660,7 @@
                   </div>
                 </div>
               </div>
+              <!-- Certificate 3 -->
               <div class="item">
                 <div class="blog-entry justify-content-end">
                   <a href="images/certificates/certificate_3_large.png" class="image-popup" title="Data Visualization with Python">
@@ -594,6 +671,7 @@
                   </div>
                 </div>
               </div>
+              <!-- Certificate 4 -->
               <div class="item">
                 <div class="blog-entry justify-content-end">
                   <a href="images/certificates/certificate_4_large.png" class="image-popup" title="Excel Basics for Data Analysis">
@@ -604,6 +682,7 @@
                   </div>
                 </div>
               </div>
+              <!-- Certificate 5 -->
               <div class="item">
                 <div class="blog-entry justify-content-end">
                   <a href="images/certificates/certificate_5_large.png" class="image-popup" title="Process Mining Fundamentals">
@@ -614,6 +693,7 @@
                   </div>
                 </div>
               </div>
+              <!-- Certificate 6 -->
               <div class="item">
                 <div class="blog-entry justify-content-end">
                    <a href="images/certificates/certificate_6_large.png" class="image-popup" title="Introduction to Data Analytics">
@@ -624,6 +704,7 @@
                   </div>
                 </div>
               </div>
+              <!-- Certificate 7 -->
               <div class="item">
                 <div class="blog-entry justify-content-end">
                   <a href="images/certificates/certificate_7_large.png" class="image-popup" title="Basic Statistics">
@@ -640,6 +721,8 @@
         </div>
       </div>
     </section>
+    <!-- CERTIFICATE SECTION END -->
+
     <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
       <div class="container">
     <div class="row d-md-flex align-items-center">
@@ -787,47 +870,58 @@
 
   <script>
     $(document).ready(function(){
+      // Certificate Carousel initialization
       if ($('.certificate-carousel').length > 0) {
         $('.certificate-carousel').owlCarousel({
-          loop:true, // Loop through certificates if enough items
-          margin:30, // Space between items
-          nav:true, // Show next/prev buttons
-          dots: true, // Show dots navigation
-          autoplay: true, // Autoplay the carousel
-          autoplayTimeout: 5000, // Autoplay interval 5 seconds
-          autoplayHoverPause: true, // Pause on hover
+          loop:true,
+          margin:30,
+          nav:true,
+          dots: true,
+          autoplay: true,
+          autoplayTimeout: 5000,
+          autoplayHoverPause: true,
           responsive:{
-            0:{
-              items:1 // Show 1 item on small screens
-            },
-            768:{ // Changed from 600 to better match Bootstrap's md breakpoint
-              items:2 // Show 2 items on medium screens
-            },
-            992:{ // Changed from 1000 to better match Bootstrap's lg breakpoint
-              items:3 // Show 3 items on large screens
-            }
+            0:{ items:1 },
+            768:{ items:2 },
+            992:{ items:3 }
           },
-          navText: ["<span class='ion-ios-arrow-back'></span>", "<span class='ion-ios-arrow-forward'></span>"] // Custom nav icons
+          navText: ["<span class='ion-ios-arrow-back'></span>", "<span class='ion-ios-arrow-forward'></span>"]
         });
       }
   
       // Initialize Magnific Popup for certificate images within the carousel
       if ($('.certificate-carousel .image-popup').length > 0) {
         $('.certificate-carousel').magnificPopup({
-            delegate: 'a.image-popup', // child items selector, by clicking on it popup will open
+            delegate: 'a.image-popup',
             type: 'image',
-            gallery:{
-                enabled:true
-            },
+            gallery:{ enabled:true },
             mainClass: 'mfp-with-zoom mfp-img-mobile', 
-            zoom: {
-                enabled: true, 
-                duration: 300, 
-                easing: 'ease-in-out',
-                opener: function(openerElement) {
-                    return openerElement.is('img') ? openerElement : openerElement.find('img');
-                }
+            zoom: { enabled: true, duration: 300, easing: 'ease-in-out', opener: function(openerElement) { return openerElement.is('img') ? openerElement : openerElement.find('img'); } }
+        });
+      }
+
+      // Project Carousel initialization
+      if ($('.project-carousel').length > 0) {
+        $('.project-carousel').owlCarousel({
+          loop:true, // Loop through projects
+          margin:30, // Space between items
+          nav:true, // Show next/prev buttons
+          dots: true, // Show dots navigation
+          autoplay: false, // You might want to keep projects static unless they actively scroll
+          autoplayTimeout: 5000, 
+          autoplayHoverPause: true,
+          responsive:{
+            0:{
+              items:1 // Show 1 item on small screens
+            },
+            768:{ // For tablets
+              items:2 // Show 2 items
+            },
+            992:{ // For desktops
+              items:3 // Show 3 items at a time
             }
+          },
+          navText: ["<span class='ion-ios-arrow-back'></span>", "<span class='ion-ios-arrow-forward'></span>"] // Use the same nav icons
         });
       }
     });

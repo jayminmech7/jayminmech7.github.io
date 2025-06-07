@@ -9708,3 +9708,44 @@ textarea.form-control {
 .progress-bar {
   background-color: #00BFA6 !important;
 }
+
+/* === Dark Theme Base === */
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+}
+
+/* Cards and Project Sections */
+.card, .project {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border: none;
+}
+
+/* Progress Bar */
+.progress-bar {
+  background-color: #00BFA6 !important;
+}
+
+/* Links */
+a, a:hover {
+  color: #00BFA6;
+}
+
+/* Button and Accent Updates */
+.bg-warning, .btn-warning {
+  background-color: #00BFA6 !important;
+  color: #121212;
+  border: none;
+}
+
+/* Optional hover effect for icons */
+.project .icon:hover {
+  background: #1e1e1e;
+  box-shadow: 0 0 10px #00BFA6;
+}

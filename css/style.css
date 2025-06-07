@@ -9703,3 +9703,8 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+/* Override Bootstrap default to apply custom teal color */
+.progress-bar {
+  background-color: #00BFA6 !important;
+}
